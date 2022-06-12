@@ -1,15 +1,36 @@
 import React from "react";
+import styles from './styles/style.css'
 
-function Message( {props_message} ) {
-    
-    return(
-        <div className="wrapper">
-            <div className="message-box">
-                <h1 className="message-h1"> {props_message} </h1>
+
+function Message ({message, isPrimary}) {
+    //console.log(isPrimary);
+    // const currentStyle = 
+    //     isPrimary ? styles.primary : styles.secondary
+    // console.log(currentStyle);
+    if(isPrimary) {
+        return (
+        
+            <div className="primary contentBody">
+                
+            <small>{message.author}</small>
+                <p className={styles.messageText}>
+                   {message.text}
+                </p>
             </div>
-        </div>
-    );
-
+        )
+    } else {
+        return (
+        
+            <div className="secondary contentBody">
+                
+            <small>{message.author}</small>
+                <p className={styles.messageText}>
+                   {message.text}
+                </p>
+            </div>
+        )
+    }
+    
 }
 
 export default Message;

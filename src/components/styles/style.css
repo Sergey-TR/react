@@ -1,0 +1,33 @@
+.contentBody {
+    border: 3px solid white;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: left;
+    padding-top: 16px;
+  }
+  
+  .primary {
+    background-color: #bad6d1;
+    width: 75%;
+    margin-top: 15px;
+    align-self: end;
+  }
+  
+  .secondary {
+    background-color: #a5e9dc;
+    width: 75%;
+    margin-top: 15px;
+    align-self: start;
+  }
+
+  small {
+    width: 100%;
+    text-align: end;
+    padding-right: 16px;
+  }
+
+  p {
+    width: 100%;
+    text-align: start;
+    padding-left: 16px;
+  }

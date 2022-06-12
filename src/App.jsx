@@ -1,13 +1,11 @@
 import './App.css';
-import Message from './components/Message';
+import Messenger from './components/Messenger';
 
 function App() {
 
-  const message = 'Первое ДЗ по курсу React.js';
-
   return (
     <div className="App">
-      <Message props_message = {message} />
+      <Messenger />
     </div>
   );
 }
