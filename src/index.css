@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  padding: 0 calc(50% - 550px);
+}
+
+.wrapper {
+  background-color: #eaeaea;
+  padding: 30px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px);
+}
+
+.messageForm {
+  height: 16%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.txt-area {
+  height: 100%;
+  width: 80%;
+  border-radius: 10px;
+  padding: 16px;
+}
