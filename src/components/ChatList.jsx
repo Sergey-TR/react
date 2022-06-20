@@ -1,13 +1,24 @@
 import React from "react";
+import {
+    ListItem,
+    ListItemText,
+    ListItemAvatar,
+    ListItemButton,
+    Avatar
+} from "@mui/material";
+import FolderIcon from "@mui/icons-material/Folder";
 
-function ChatList () {
 
+const ChatList = ({ name }) => {
 
     return (
-        <div>
-
-        </div>
-    )
+        <><ListItem>
+            <ListItemButton>
+                <ListItemAvatar><Avatar><FolderIcon /></Avatar></ListItemAvatar>
+                <ListItemText primary={name} />
+            </ListItemButton>
+        </ListItem></>
+    );
 }
 
 export default ChatList;

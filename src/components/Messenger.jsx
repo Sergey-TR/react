@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ChatList from "./ChatList";
 import {
     Button,
@@ -10,6 +10,7 @@ import {
     createTheme,
 } from "@mui/material";
 import { blue } from "@mui/material/colors";
+import SendIcon from '@mui/icons-material/Send';
 
 const theme = createTheme({
     palette: {
@@ -30,13 +31,16 @@ function Messenger() {
         { name: 'Nodejs', id: '3' }
     ]);
 
+    const inputRef = useRef(null);
+
     useEffect(() => {
         setTimeout(() => {
             botAnswer(messageList)
-        }, 1500)
-    }, [messageList])
+        }, 1500);
+        inputTextField(inputRef.current)
+    }, [author, messageList])
 
-    const submitHandler = (event) => {
+    const buttonClick = (event) => {
         event.preventDefault();
 
         setMessageList(prevState => [...prevState, {
@@ -62,32 +66,78 @@ function Messenger() {
         }
     }
 
+    function inputTextField(input) {
+        if(input) {
+            input.focus();
+        }
+    }
+
     return (
         <div className="wrapper">
 
             <div className="wrapper-box">
-                <div className="chat-box">
+                {/* <div className="chat-box"> */}
+                <Box sx={{
+                    width: '50%', margin: '10px', padding: '10px', backgroundColor: '#FFFFFF'
+                }}>
                     <Typography variant="h5" component="div" color="primary">CHATS</Typography>
-                    <ChatList>
+                    <List>
+                        {list.map(item => {
+                            return (
+                                <ChatList name={item.name} key={item.id} />
+                            );
+                        })}
+                    </List>
+                </Box>
 
-                    </ChatList>
-                </div>
+                {/* </div> */}
                 <div className="messenger-box">
-                   <div className="messenger-content">
-                   {messageList.map((message) => {
-                        return (
-                            <div key={message.id}>
-                                {message.author && <p>Автор: {message.author}</p>}
-                                <p>{message.author && <span>Текст:</span>} {message.content}</p>
-                            </div>
-                        )
-                    })}
-                   </div>
-                    <form onSubmit={submitHandler}>
+                    <div className="messenger-content">
+                        {messageList.map((message) => {
+                            return (
+                                <div key={message.id}>
+                                    {message.author && <p>Автор: {message.author}</p>}
+                                    <p>{message.author && <span>Текст:</span>} {message.content}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    {/* <form onSubmit={submitHandler}>
                         <input value={content} onChange={(event) => setContent(event.target.value)} />
                         <input value={author} onChange={(event) => setAuthor(event.target.value)} />
                         <Button type="submit" variant="contained">SEND</Button>
-                    </form>
+                    </form> */}
+                    <Box 
+                        component="form"
+                        noValidate
+                        autoComplete = "off"
+                    >
+
+                        <TextField sx={{ backgroundColor: '#eaeaea', margin: '10px 0 0 0' }}
+                            required
+                            fullWidth
+                            id='outlined-multiline-flexible'
+                            multiline
+                            maxRows={4}
+                            label='Message text'
+                            inputRef={inputRef}
+                            value={content} onChange={(event) => setContent(event.target.value)}
+                        />
+                        <TextField sx={{ backgroundColor: '#eaeaea', margin: '10px 0 0 0' }}
+                            required
+                            fullWidth
+                            id='outlined-required'
+                            label='Author name'
+                            value={author} onChange={(event) => setAuthor(event.target.value)}
+                        />
+                        <Button sx={{ margin: '10px 0 0 0' }} 
+                            variant="contained"
+                            endIcon={<SendIcon />}
+                            onClick={buttonClick}
+                            >
+                                SEND
+                        </Button>
+                    </Box>
                 </div>
             </div>
 
