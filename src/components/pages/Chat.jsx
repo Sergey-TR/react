@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddBoxOutlined from "@mui/icons-material/AddBoxOutlined";
+import { Box, TextField, Typography } from "@mui/material";
 
 const Chat = () => {
 
@@ -25,32 +28,63 @@ const deleteChat = (id) => {
 };
 
 const addChat = () => {
-    let randomId = Math.random()
+    let randomId = Math.random();
     const newChat = {
         id: randomId,
         name: name
     }
+    
     setChats(prevState => [...prevState, newChat])
 };
     return (
-        <div>
+        <div className="chat-box">
+            <Box>
+            <Typography variant="h5" component="div" 
+                            sx={{ color: "#8B0000", marginBottom: '15px', textAlign: 'start'}}
+                        >
+                            Chats
+                        </Typography>
             {
                 chats.map((chat) => (
-                    <div key={chat.id}>
-                        <h4>{ chat.name }</h4>
-                        <i className="bi bi-trash3 cursor" onClick={() => deleteChat(chat.id)}></i>
+                    <div key={chat.id} className="wrapper-box">
+                        <Typography variant="h5" component="div" 
+                            sx={{ color: "#8B0000"}}
+                        >
+                            { chat.name }
+                        </Typography>
+                        <DeleteIcon sx={{ color: '#797979', fontSize: 30, cursor: 'pointer' }} 
+                            onClick={() => deleteChat(chat.id)}
+                        />
                     </div>
                 ))
             }
+            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'self-start', width: 500 }}
+                component="div"            
+            >
+                <Typography variant="h5" component="div" 
+                    sx={{ color: "#8B0000", marginBottom: '15px' }}
+                >
+                    Add chat
+                </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}
+                        component="form"
+                        noValidate
+                        autoComplete = "off"
+                    >
+                    
+                    <TextField sx={{ display: 'flex' }}
+                        id='outlined-required'
+                        label='Add chat'
+                        value={name} onChange={(e) => setName(e.target.value)}
 
-            <div>
-                    <p>Add chat</p>
-                <div>
-                <input value={name} onChange={(e) => setName(e.target.value)}/>
-                <i className="bi bi-plus-square cursor" onClick={addChat}></i>
-                </div>
-            </div>
-            
+                    />
+
+                    <AddBoxOutlined sx={{ color: '#797979', fontSize: '70px', cursor: 'pointer' }}
+                        onClick={addChat}
+                    />
+                    </Box>
+            </Box>
         </div>
     );
 };
