@@ -16,6 +16,14 @@ code {
   padding: 0 calc(50% - 550px);
 }
 
+.cursor {
+  cursor: pointer;
+}
+
+.bi-plus-square {
+  font-size: 20px;
+}
+
 .wrapper {
   background-color: #eaeaea;
   padding: 30px;
