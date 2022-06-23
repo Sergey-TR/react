@@ -14,6 +14,8 @@ const Counter = (props) => {
 
     const dispatch = useDispatch();
 
+    
+
     return (
         <div className="wrapper">
             <div className="wrapperBox">
@@ -25,7 +27,7 @@ const Counter = (props) => {
                         <RemoveCircleOutlineIcon sx={{ fontSize: '100px', color: '#008000', cursor: 'pointer'}}
                         className="activeRm"/>
                     </Typography>
-                    <Typography sx={{ width: '200px', height: '200px', borderRadius: '50%',
+                    <Typography sx={{ minWidth: '200px', minHeight: '200px', borderRadius: '50%',
                         border: '5px solid #728FCE', color: '#728FCE', fontSize: '120px'
                 }}>
                        { count }
