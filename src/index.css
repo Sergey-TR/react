@@ -11,3 +11,105 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .App {
+  padding: 0 calc(50% - 550px);
+} */
+
+.cursor {
+  cursor: pointer;
+}
+
+.bi-plus-square {
+  font-size: 20px;
+}
+
+header {
+  background-color: #eaeaea;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.17);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.linkMenu {
+  color: #737CA1;
+  text-decoration: none;
+  padding: 30px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  /* background-color: #eaeaea;
+  padding: 30px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; */
+  padding: 0 calc(50% - 550px);
+}
+
+.wrapperBox {
+  background-color: #eaeaea;
+  padding: 30px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.wrapper-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 500px;
+  border: 1px solid #797979;
+  border-radius: 10px;
+}
+
+.messenger-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  /* border: 2px solid blue; */
+  padding: 10px;
+  background-color: #FFFFFF;
+}
+
+.messenger-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 275px);
+  overflow: auto;
+}
+
+.messageForm {
+  height: 16%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.txt-area {
+  height: 100%;
+  width: 80%;
+  border-radius: 10px;
+  padding: 16px;
+}
+.activeRm:active {
+  color: #28A828;
+}
+
+.activePlus:active {
+  color: #FF5050;
+}
