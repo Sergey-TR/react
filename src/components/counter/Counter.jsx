@@ -1,20 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { incrementCount, decrementCount } from "../../redux/actions";
+import { getCounter } from "../../redux/reducers/countReducer/counterSelector";
+import { incrementCount, decrementCount } from "../../redux/actions/actions";
 import { Box, Typography } from "@mui/material";
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 
 const Counter = (props) => {
 
-    const count = useSelector(state => {
-        const { counterReducer } = state;
-        return counterReducer.count;
-    });
+    const count = useSelector(getCounter);
 
     const dispatch = useDispatch();
-
-    
 
     return (
         <div className="wrapper">

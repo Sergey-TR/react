@@ -2,29 +2,21 @@ import React, { useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddBoxOutlined from "@mui/icons-material/AddBoxOutlined";
 import { Box, TextField, Typography } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { getChats } from "../../redux/reducers/chatReducer/chatSelector";
+import { ADD_CHAT, DELETE_CHAT } from "../../redux/types";
 
 const Chat = () => {
 
-    const [chats, setChats] = useState([
-        {
-            id: 1,
-            name: 'JavaScript'
-        },
-        {
-            id: 2,
-            name: 'Vue.js'
-        },
-        {
-            id: 3,
-            name: 'React.js'
-        }
-    ]);
-
+    const chats = useSelector(getChats);
     const [name, setName] = useState('');
+    const dispatch = useDispatch();
 
     const deleteChat = (id) => {
-        const filteredChat = chats.filter((chat) => chat.id !== id);
-        setChats(filteredChat);
+        dispatch({
+            type: DELETE_CHAT,
+            payload: id
+        })
     };
 
     const addChat = () => {
@@ -33,8 +25,10 @@ const Chat = () => {
             id: randomId,
             name: name
         }
-
-        setChats(prevState => [...prevState, newChat])
+        dispatch({
+            type: ADD_CHAT,
+            payload: newChat
+        })
     };
     return (
         <div className="wrapper">
@@ -47,7 +41,7 @@ const Chat = () => {
                     </Typography>
                     {
                         chats.map((chat) => (
-                            <div key={chat.id} className="wrapper-box">
+                            <div key={chat.id} className="wrapper-box"> 
                                 <Typography variant="h5" component="div"
                                     sx={{ color: "#8B0000" }}
                                 >

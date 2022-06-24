@@ -11,6 +11,8 @@ const LayoutMenu = () => {
                     className="linkMenu">Chats</NavLink>
                 <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/profile'}
                     className="linkMenu">Profile</NavLink>
+                <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/messages'}
+                    className="linkMenu">Messages</NavLink>    
                 <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/counter'}
                     className="linkMenu">Counter</NavLink>   
             </header>
