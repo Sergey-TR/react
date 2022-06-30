@@ -7,6 +7,7 @@ import { getChats } from "../../redux/reducers/chatReducer/chatSelector";
 import { getMessages } from "../../redux/reducers/messageReducer/messageSelector";
 import { ADD_CHAT, DELETE_CHAT } from "../../redux/types";
 import Messages from "./Messages";
+import uniqid from "uniqid"
 
 const Chat = () => {
 
@@ -22,16 +23,20 @@ const Chat = () => {
     }
 
     const deleteChat = (id) => {
+        setTimeout(() => alert('Are you crazy?'), 1000);
         dispatch({
             type: DELETE_CHAT,
-            payload: id
-        })
+            payload: id,
+            meta: {
+                delayMs: 3000
+            }           
+        }) 
     };
 
     const addChat = () => {
-        let randomId = Math.random();
+        //let randomId = Math.random();
         const newChat = {
-            id: randomId,
+            id: uniqid(),
             name: name
         }
         dispatch({

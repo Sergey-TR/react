@@ -1,4 +1,1 @@
-export const getCounter = state => {
-    const { counterReducer } = state;
-    return counterReducer.count;
-}
+export const getCounter = state => state.count.count
