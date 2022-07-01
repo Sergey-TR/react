@@ -13,6 +13,8 @@ const LayoutMenu = () => {
                     className="linkMenu">Profile</NavLink>  
                 <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/counter'}
                     className="linkMenu">Counter</NavLink>   
+                <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/comments'}
+                    className="linkMenu">Comments</NavLink>     
             </header>
             <main>
                 <Outlet />

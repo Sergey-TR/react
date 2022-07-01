@@ -1,5 +1,3 @@
-import { ADD_MESSAGE, DELETE_MESSAGE } from "../../types";
-// ADD_MESSAGE, DELETE_MESSAGE пока не делал
 
 const initialState = {
     messages: [

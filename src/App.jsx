@@ -6,6 +6,7 @@ import Profile from './components/pages/Profile';
 import NotFound from './components/pages/NotFound';
 import LayoutMenu from './components/layouts/LayoutMenu';
 import Counter from './components/counter/Counter';
+import Comments from './components/pages/Comments';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path={'/chats'} element={<Chat />} />
           <Route path={'/profile'} element={<Profile />} />
           <Route path={'/counter'} element={<Counter />} />
+          <Route path={'/comments'} element={<Comments />} />
         </Route>
         <Route path={'*'} element={<NotFound />} />
       </Routes>
