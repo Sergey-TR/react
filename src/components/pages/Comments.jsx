@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { commentSelector } from "../../redux/reducers/commentsReducer/commentsSelector";
 import { getComments } from "../../redux/actions/actions";
+import Spin from "../spinner/Spin";
 
 const Comments = () => {
     
@@ -17,7 +18,10 @@ const Comments = () => {
 
     return (
         <div className="wrapper">
+            
             <div className="wrapperBox">
+                
+            <Spin/>
             {
                 comments.map((comment) => (
                     <div key={comment.id} className="wrapper-box">
