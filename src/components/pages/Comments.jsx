@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-//import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { commentSelector } from "../../redux/reducers/commentsReducer/commentsSelector";
 import { getComments } from "../../redux/actions/actions";
@@ -7,7 +6,6 @@ import Spin from "../spinner/Spin";
 
 const Comments = () => {
     
-    //const [comments, setComments] = useState([])
     const comments = useSelector(commentSelector);
     
     const dispatch = useDispatch();
