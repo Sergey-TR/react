@@ -3,7 +3,10 @@ import {
     DECREMENT,
     GET_COMMENTS,
     LOADER_DISPLAY_OFF,
-    LOADER_DISPLAY_ON
+    LOADER_DISPLAY_ON,
+    REGISTER_START,
+    REGISTER_SUCCESS,
+    REGISTER_ERROR
 } from "../types";
 
 export const incrementCount = {
@@ -45,3 +48,17 @@ export function getComments() {
         }
     }
 }
+
+export const registerStart = () => ({
+    type: REGISTER_START
+})
+
+export const registerSuccess = (user) => ({
+    type: REGISTER_SUCCESS,
+    payload: user
+})
+
+export const registerError = (err) => ({
+    type: REGISTER_ERROR,
+    payload: err.toString()
+})

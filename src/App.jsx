@@ -7,6 +7,8 @@ import NotFound from './components/pages/NotFound';
 import LayoutMenu from './components/layouts/LayoutMenu';
 import Counter from './components/counter/Counter';
 import Comments from './components/pages/Comments';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
           <Route path={'/profile'} element={<Profile />} />
           <Route path={'/counter'} element={<Counter />} />
           <Route path={'/comments'} element={<Comments />} />
+          <Route path={'/login'} element={<Login />} />
+          <Route path={'/register'} element={<Register />} />
         </Route>
         <Route path={'*'} element={<NotFound />} />
       </Routes>
