@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerInit } from "../../redux/reducers/userReducer/userReducer";
-import { userSelector } from "../../redux/reducers/userReducer/userSelector";
+import { getUser } from "../../redux/reducers/userReducer/userSelector";
 
 const Register = () => {
 
@@ -10,19 +10,17 @@ const Register = () => {
     const [userPassword, setUserPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const dispatch = useDispatch;
-    const user = useSelector(userSelector);
-
-    
-
+    const dispatch = useDispatch();
+    const user = useSelector(getUser);
+    console.log(user)
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userPassword !== confirmPassword) {
             alert('ПАРОЛИ НЕ СОВПАДАЮТ');
             return;
         }
-        console.log(userName)
-        dispatch(registerInit(userName, userEmail, userPassword))
+        
+       dispatch(registerInit(userName, userEmail, userPassword))
     }
 
     return (

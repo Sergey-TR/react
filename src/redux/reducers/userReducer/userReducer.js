@@ -1,16 +1,15 @@
 import { REGISTER_START, REGISTER_SUCCESS, REGISTER_ERROR } from "../../types";
-import { registerError, registerStart, registerSuccess } from "../../actions/actions";
-import { auth } from "../../../firebase";
+import { defaultAuth } from "../../../firebase/firebase";
+import { registerStart, registerSuccess, registerError } from "../../actions/actions";
 
 const initialState = {
     user: null,
     loading: false,
     error: null
-
 }
 
 export const userReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case REGISTER_START:
             return {
                 ...state,
@@ -19,16 +18,16 @@ export const userReducer = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                currentUser: action.payload,
+                user: action.payload,
                 loading: false
             }
+
         case REGISTER_ERROR:
             return {
                 ...state,
                 error: action.payload,
                 loading: false
             }
-
         default:
             return state
     }
@@ -37,7 +36,7 @@ export const userReducer = (state = initialState, action) => {
 export const registerInit = (userName, userEmail, userPassword) => {
     return(dispatch) => {
         dispatch(registerStart())
-        auth 
+        defaultAuth 
             .createUserWithEmailAndPassword(userEmail, userPassword)
             .then(({user}) => {
                 user.updateProfile({
