@@ -1,9 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
+import { logoutInit } from "../../middleware/auth/logoutInit";
+import { getUser } from "../../redux/reducers/userReducer/userSelector";
 
 const LayoutMenu = () => {
 
-    const user = false;
+    //const user = false;
+    const user = useSelector(getUser);
+    //console.log(user)
+    const dispatch = useDispatch();
+
+    const logout = () => {
+        dispatch(logoutInit())
+    }
 
     return (
         <div>
@@ -23,7 +33,7 @@ const LayoutMenu = () => {
                 <div className="header-right">
                     {user ? 
                         <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/'}
-                        className="linkMenu">LOGOUT
+                        className="linkMenu" onClick={logout}>LOGOUT
                         </NavLink> :
                         <div>
                             <NavLink style={({ isActive }) => ({ color: isActive ? '#0000FF' : '#737CA1' })} to={'/login'}

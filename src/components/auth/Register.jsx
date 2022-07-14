@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerInit } from "../../redux/reducers/userReducer/userReducer";
+import { useNavigate } from "react-router-dom";
+import { registerInit } from "../../middleware/auth/registerInit";
 import { getUser } from "../../redux/reducers/userReducer/userSelector";
 
 const Register = () => {
@@ -12,7 +13,14 @@ const Register = () => {
 
     const dispatch = useDispatch();
     const user = useSelector(getUser);
-    console.log(user)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate('/profile')
+        }
+    })
+    // console.log(user)
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userPassword !== confirmPassword) {

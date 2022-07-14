@@ -1,6 +1,15 @@
-import { REGISTER_START, REGISTER_SUCCESS, REGISTER_ERROR } from "../../types";
-import { defaultAuth } from "../../../firebase/firebase";
-import { registerStart, registerSuccess, registerError } from "../../actions/actions";
+import {
+    REGISTER_START,
+    REGISTER_SUCCESS,
+    REGISTER_ERROR,
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR,
+    LOGOUT_START,
+    LOGOUT_ERROR,
+    LOGOUT_SUCCESS
+}
+from "../../types";
 
 const initialState = {
     user: null,
@@ -11,39 +20,36 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_START:
+        case LOGIN_START:
+        case LOGOUT_START:
             return {
                 ...state,
                 loading: true
             }
-        case REGISTER_SUCCESS:
-            return {
-                ...state,
-                user: action.payload,
-                loading: false
-            }
+            case REGISTER_SUCCESS:
+            case LOGIN_SUCCESS:
+                return {
+                    ...state,
+                    user: action.payload,
+                        loading: false
+                }
 
-        case REGISTER_ERROR:
-            return {
-                ...state,
-                error: action.payload,
-                loading: false
-            }
-        default:
-            return state
+                case LOGOUT_SUCCESS:
+                    return {
+                        ...state,
+                        user: null
+                    }
+
+                    case REGISTER_ERROR:
+                    case LOGIN_ERROR:
+                    case LOGOUT_ERROR:
+                        return {
+                            ...state,
+                            error: action.payload,
+                                loading: false
+                        }
+                        default:
+                            return state
     }
 }
 
-export const registerInit = (userName, userEmail, userPassword) => {
-    return(dispatch) => {
-        dispatch(registerStart())
-        defaultAuth 
-            .createUserWithEmailAndPassword(userEmail, userPassword)
-            .then(({user}) => {
-                user.updateProfile({
-                    userName
-                })
-                dispatch(registerSuccess(user))
-            }) 
-            .catch((err) => dispatch(registerError(err)))
-    }
-}

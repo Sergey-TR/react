@@ -6,7 +6,13 @@ import {
     LOADER_DISPLAY_ON,
     REGISTER_START,
     REGISTER_SUCCESS,
-    REGISTER_ERROR
+    REGISTER_ERROR,
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR,
+    LOGOUT_START,
+    LOGOUT_SUCCESS,
+    LOGOUT_ERROR
 } from "../types";
 
 export const incrementCount = {
@@ -61,4 +67,30 @@ export const registerSuccess = (user) => ({
 export const registerError = (err) => ({
     type: REGISTER_ERROR,
     payload: err.toString()
+})
+
+export const loginStart = () => ({
+    type: LOGIN_START
+})
+
+export const loginSuccess = (user) => ({
+    type: LOGIN_SUCCESS,
+    payload: user
+})
+
+export const loginError = (err) => ({
+    type: LOGIN_ERROR,
+    payload: err.toString()
+})
+
+export const logoutStart = () => ({
+    type: LOGOUT_START
+})
+
+export const logoutSuccess = (user) => ({
+    type: LOGOUT_SUCCESS
+})
+
+export const logoutError = (err) => ({
+    type: LOGOUT_ERROR
 })
